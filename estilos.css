@@ -6,7 +6,49 @@
 }
 
 body{
-    background: #2222;
+    background: #000000;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+body.light {
+    background: #ffffff;
+}
+
+body.light .contenedor {
+    background: linear-gradient(125deg, #87CEFA, #4682B4);
+    color: #000;
+}
+
+.tema-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.tema-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+body.light .tema-btn {
+    background: rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+body.light .tema-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .contenedor{
@@ -18,6 +60,7 @@ body{
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    position: relative;
 }
 
 .buscador{
@@ -104,4 +147,81 @@ h2{
 .humedad, .viento{
     font-size: 28px;
     margin-top: -6px;
+}
+
+.lluvia {
+    position: relative;
+    overflow: hidden;
+}
+
+.lluvia::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('imagenes/lluvia.gif');
+    background-size: cover;
+    opacity: 0.3;
+    animation: lluviaAnim 3s linear infinite;
+    z-index: 1;
+}
+
+.nublado {
+    position: relative;
+    overflow: hidden;
+}
+
+.nublado::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('imagenes/nublado.gif');
+    background-size: cover;
+    opacity: 0.3;
+    animation: nubladoAnim 3s linear infinite;
+    z-index: 1;
+}
+
+.soleado {
+    position: relative;
+    overflow: hidden;
+}
+
+.soleado::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('imagenes/soleado.gif');
+    background-size: cover;
+    opacity: 0.3;
+    animation: soleadoAnim 3s linear infinite;
+    z-index: 1;
+}
+
+.contenedor > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes lluviaAnim {
+    from { top: -100%; }
+    to { top: 0%; }
+}
+
+@keyframes nubladoAnim {
+    from { top: -100%; }
+    to { top: 0%; }
+}
+
+@keyframes soleadoAnim {
+    from { top: -100%; }
+    to { top: 0%; }
 }
